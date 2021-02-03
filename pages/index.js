@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import Head from "next/head"
 
-import AppLayout from "components/AppLayout"
 import Button from "components/Button"
 import GitHub from "components/Icons/GitHub"
 import Logo from "components/Icons/Logo"
+import Loading from "components/Loading"
 import Spinner from "components/Spinner";
 import useUser, { USER_STATES } from "hooks/useUser"
 
@@ -33,7 +33,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AppLayout>
         <section>
           <Logo width="150" height="200" />
           <h1>FomTer</h1>
@@ -51,10 +50,10 @@ export default function Home() {
               </Button>
             )}
             {/* {user === USER_STATES.NOT_KNOWN && <img src="spinner.gif" />} */}
-            {user === USER_STATES.NOT_KNOWN && <Spinner />}
+            {/* {user === USER_STATES.NOT_KNOWN && <Spinner />} */}
+            {user === USER_STATES.NOT_KNOWN && <Loading size={45} />}
           </div>
         </section>
-      </AppLayout>
 
       <style jsx>{`
         img {
