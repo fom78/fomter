@@ -5,11 +5,11 @@ import Button from "components/Button"
 import GitHub from "components/Icons/GitHub"
 import Logo from "components/Icons/Logo"
 import Loading from "components/Loading"
-import Spinner from "components/Spinner";
+// import Spinner from "components/Spinner";
 import useUser, { USER_STATES } from "hooks/useUser"
 
 import { colors } from "styles/theme"
-import { loginWithGitHub } from "firebase/client"
+import { loginWithGitHub, loginWithGmail } from "firebase/client"
 import { useRouter } from "next/router"
 
 export default function Home() {
@@ -22,6 +22,12 @@ export default function Home() {
 
   const handleClick = () => {
     loginWithGitHub().catch((err) => {
+      console.log(err)
+    })
+  }
+
+  const handleClickGmail = () => {
+    loginWithGmail().catch((err) => {
       console.log(err)
     })
   }
@@ -44,10 +50,17 @@ export default function Home() {
 
           <div>
             {user === USER_STATES.NOT_LOGGED && (
+              
+              <>
               <Button onClick={handleClick}>
                 <GitHub fill="#fff" width={24} height={24} />
                 Login with GitHub
               </Button>
+              <Button onClick={handleClickGmail}>
+              <GitHub fill="#fff" width={24} height={24} margin-top={15} />
+              Login with Gmail
+            </Button>
+            </>
             )}
             {/* {user === USER_STATES.NOT_KNOWN && <img src="spinner.gif" />} */}
             {/* {user === USER_STATES.NOT_KNOWN && <Spinner />} */}

@@ -3,6 +3,8 @@ import { DEFAULT_LANGUAGE } from "constants/locale"
 const isDateTimeFormatSupported =
   typeof Intl !== "undefined" && Intl.DateTimeFormat
 
+// const isDateTimeFormatSupported = false
+
 export const formatDate = (timestamp, { language = DEFAULT_LANGUAGE } = {}) => {
   const date = new Date(timestamp)
 
